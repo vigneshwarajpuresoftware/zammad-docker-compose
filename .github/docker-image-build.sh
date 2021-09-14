@@ -16,6 +16,6 @@ for DOCKER_IMAGE in ${DOCKER_IMAGES}; do
   docker buildx inspect --bootstrap
   docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
   docker login --username=ajv21 -p=Jun21@2021
-  docker buildx build --push --no-cache --build-arg BUILD_DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')" -t ajv21/zammad-docker-compose:latest --platform linux/arm64,linux/amd64 -f "containers/${DOCKER_IMAGE}/Dockerfile" .
+  docker buildx build --push --no-cache --build-arg BUILD_DATE="$(date -u +'%Y-%m-%dT%H:%M:%SZ')" -t ajv21/zammad-docker-compose:latest --platform linux/arm64 -f "containers/${DOCKER_IMAGE}/Dockerfile" .
   docker buildx rm samplekit
 done
